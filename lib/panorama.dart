@@ -5,7 +5,7 @@ import 'dart:ui' as ui;
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_cube/flutter_cube.dart';
-import 'package:motion_sensors/motion_sensors.dart';
+// import 'package:motion_sensors/motion_sensors.dart';
 
 enum SensorControl {
   /// No sensor used.
@@ -276,26 +276,26 @@ class _PanoramaState extends State<Panorama> with SingleTickerProviderStateMixin
     _orientationSubscription?.cancel();
     switch (widget.sensorControl) {
       case SensorControl.Orientation:
-        motionSensors.orientationUpdateInterval = Duration.microsecondsPerSecond ~/ 60;
-        _orientationSubscription = motionSensors.orientation.listen((OrientationEvent event) {
-          orientation.setValues(event.yaw, event.pitch, event.roll);
-        });
+        // motionSensors.orientationUpdateInterval = Duration.microsecondsPerSecond ~/ 60;
+        // _orientationSubscription = motionSensors.orientation.listen((OrientationEvent event) {
+        //   orientation.setValues(event.yaw, event.pitch, event.roll);
+        // });
         break;
       case SensorControl.AbsoluteOrientation:
-        motionSensors.absoluteOrientationUpdateInterval = Duration.microsecondsPerSecond ~/ 60;
-        _orientationSubscription = motionSensors.absoluteOrientation.listen((AbsoluteOrientationEvent event) {
-          orientation.setValues(event.yaw, event.pitch, event.roll);
-        });
+        // motionSensors.absoluteOrientationUpdateInterval = Duration.microsecondsPerSecond ~/ 60;
+        // _orientationSubscription = motionSensors.absoluteOrientation.listen((AbsoluteOrientationEvent event) {
+        //   orientation.setValues(event.yaw, event.pitch, event.roll);
+        // });
         break;
       default:
     }
 
     _screenOrientSubscription?.cancel();
-    if (widget.sensorControl != SensorControl.None) {
-      _screenOrientSubscription = motionSensors.screenOrientation.listen((ScreenOrientationEvent event) {
-        screenOrientation = radians(event.angle!);
-      });
-    }
+    // if (widget.sensorControl != SensorControl.None) {
+    //   _screenOrientSubscription = motionSensors.screenOrientation.listen((ScreenOrientationEvent event) {
+    //     screenOrientation = radians(event.angle!);
+    //   });
+    // }
   }
 
   void _updateTexture(ImageInfo imageInfo, bool synchronousCall) {
